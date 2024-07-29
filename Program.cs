@@ -6,12 +6,11 @@ namespace Programa1
     {
         static string nombreProducto;
         static double precioProducto;
-        static string[] nameProducto = new string[0];
-        static double[] priceProductos = new double[0];
-        static int contador = 1;
-        static double total = 0;
-        static double suma;
-        static double descuento;
+        static string[] nameProducto = new string[contador];
+        static double[] priceProductos = new double[contador];
+        static int contador = 0;
+        static double total = 0, suma, descuento;
+        static bool continuar = true;
 
         static void Main(string[] args)
         {
@@ -30,8 +29,6 @@ namespace Programa1
                     contador++;
                     Console.WriteLine("Ingrese el nombre del producto");
                     nombreProducto = Console.ReadLine();
-
-                    nameProducto[contador] = nombreProducto;
 
                     Console.WriteLine("Ingrese el precio del producto");
                     precioProducto = Convert.ToDouble(Console.ReadLine());
@@ -65,9 +62,20 @@ namespace Programa1
 
                 total = total - (total * descuento);
             }
-
+            int opcion = 0;
             Menu();
-            int opcion = Convert.ToInt32(Console.ReadLine());
+            while (continuar)
+            { try
+                {
+                    opcion = Convert.ToInt32(Console.ReadLine());
+                    continuar = false;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error " + ex.Message); 
+                    continuar = true;
+                }
+            }
             do
             {
                 switch (opcion)
