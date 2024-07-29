@@ -1,44 +1,60 @@
 ﻿using System.Data;
 
-Console.WriteLine("Tienda Panfila");
-
-static void Menu()
+namespace Programa1
 {
-    Console.WriteLine("1 = Ingresar producto");
-    Console.WriteLine("2 = Pagar");
-    Console.WriteLine("3 = Aplicar descuento");
-}
-
-static void IngresarProductos(string nombreProducto, double precioProducto, int contador = 0)
-{
-    int nuevo = 0;
-    string[] nameProducto = new string[contador];
-    double[] priceProductos = new double[contador];
-    do
+    internal class Program
     {
-        contador++;
-        Console.WriteLine("Ingrese el nombre del producto");
-        nombreProducto = Console.ReadLine();
+        static string nombreProducto;
+        static double precioProducto;
+        static string[] nameProducto = new string[0];
+        static double[] priceProductos = new double[0];
 
-        nameProducto[contador] = nombreProducto;
+        static void Main(string[] args)
+        {
+            static void Menu()
+            {
+                Console.WriteLine("Tienda Panfila");
+                Console.WriteLine("1 = Ingresar producto");
+                Console.WriteLine("2 = Pagar");
+                Console.WriteLine("3 = Aplicar descuento");
+            }
 
-        Console.WriteLine("Ingrese el precio del producto");
-        precioProducto = Convert.ToDouble(precioProducto);
+            static void IngresarProductos()
+            {
+                int contador = 0;
+                int nuevo = 0;
+                do
+                {
+                    contador++;
+                    Console.WriteLine("Ingrese el nombre del producto");
+                    nombreProducto = Console.ReadLine();
 
-        priceProductos[contador] = precioProducto;
+                    nameProducto[contador] = nombreProducto;
 
-        Console.WriteLine("Desea ingresar otro producto?");
-        Console.WriteLine("1 = SI");
-        Console.WriteLine("2 = NO");
-        nuevo = Convert.ToInt32(Console.ReadLine());
-    } while (nuevo == 1);
+                    Console.WriteLine("Ingrese el precio del producto");
+                    precioProducto = Convert.ToDouble(Console.ReadLine());
+
+                    priceProductos[contador] = precioProducto;
+
+                    Console.WriteLine("Desea ingresar otro producto?");
+                    Console.WriteLine("1 = SI");
+                    Console.WriteLine("2 = NO");
+                    nuevo = Convert.ToInt32(Console.ReadLine());
+                } while (nuevo == 1);
+            }
+
+            static void Pagar()
+            {
+                IngresarProductos();
+
+
+
+            }
+
+            static void AplicarDescuento()
+            {
+
+            }
+        }
+    }
 }
-
-static void Pagar()
-{
-}
-
-static void AplicarDescuento()
-{
-}
-
