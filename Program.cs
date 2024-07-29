@@ -8,6 +8,8 @@ namespace Programa1
         static double precioProducto;
         static string[] nameProducto = new string[0];
         static double[] priceProductos = new double[0];
+        static int contador = 0;
+        static double total = 0;
 
         static void Main(string[] args)
         {
@@ -21,7 +23,6 @@ namespace Programa1
 
             static void IngresarProductos()
             {
-                int contador = 0;
                 int nuevo = 0;
                 do
                 {
@@ -43,12 +44,16 @@ namespace Programa1
                 } while (nuevo == 1);
             }
 
-            static void Pagar()
+            static void Pagar(double suma)
             {
                 IngresarProductos();
 
-
-
+                foreach (double x in priceProductos)
+                {
+                    suma += x;
+                }
+                total = suma;
+                Console.WriteLine("su total a pagar es de: " + suma);
             }
 
             static void AplicarDescuento()
