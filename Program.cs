@@ -8,17 +8,18 @@ namespace Programa1
         static double precioProducto;
         static string[] nameProducto = new string[0];
         static double[] priceProductos = new double[0];
-        static int contador = 0;
+        static int contador = 1;
         static double total = 0;
+        static double suma;
+        static double descuento;
 
         static void Main(string[] args)
         {
             static void Menu()
             {
                 Console.WriteLine("Tienda Panfila");
-                Console.WriteLine("1 = Ingresar producto");
-                Console.WriteLine("2 = Pagar");
-                Console.WriteLine("3 = Aplicar descuento");
+                Console.WriteLine("1 = Pagar");
+                Console.WriteLine("2 = Aplicar descuento");
             }
 
             static void IngresarProductos()
@@ -44,10 +45,9 @@ namespace Programa1
                 } while (nuevo == 1);
             }
 
-            static void Pagar(double suma)
+            static void Pagar()
             {
                 IngresarProductos();
-
                 foreach (double x in priceProductos)
                 {
                     suma += x;
@@ -58,8 +58,32 @@ namespace Programa1
 
             static void AplicarDescuento()
             {
+                Console.WriteLine("Aplique el porcentaje de descuento con el que cuenta");
+                descuento = Convert.ToDouble(Console.ReadLine());
 
+                descuento = descuento / 100;
+
+                total = total - (total * descuento);
             }
+
+            Menu();
+            int opcion = Convert.ToInt32(Console.ReadLine());
+            do
+            {
+                switch (opcion)
+                {
+                    case 1:
+                        Pagar();
+                        break;
+                    case 2:
+                        AplicarDescuento();
+                        break;
+                }
+                Console.WriteLine("Desea finalizar?");
+                Console.WriteLine("1 = si");
+                Console.WriteLine("2 = no");
+                opcion = Convert.ToInt32(Console.ReadLine());
+            } while (opcion == 1);
         }
     }
 }
