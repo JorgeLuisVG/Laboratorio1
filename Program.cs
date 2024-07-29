@@ -12,20 +12,20 @@ static void Menu()
 static void IngresarProductos(string nombreProducto, double precioProducto, int contador = 0)
 {
     int nuevo = 0;
+    string[] nameProducto = new string[contador];
+    double[] priceProductos = new double[contador];
     do
     {
         contador++;
         Console.WriteLine("Ingrese el nombre del producto");
         nombreProducto = Console.ReadLine();
 
+        nameProducto[contador] = nombreProducto;
+
         Console.WriteLine("Ingrese el precio del producto");
         precioProducto = Convert.ToDouble(precioProducto);
 
-        for (int i = 0; i < contador; i++)
-        {
-            
-
-        }
+        priceProductos[contador] = precioProducto;
 
         Console.WriteLine("Desea ingresar otro producto?");
         Console.WriteLine("1 = SI");
