@@ -65,14 +65,15 @@ namespace Programa1
             int opcion = 0;
             Menu();
             while (continuar)
-            { try
+            {
+                try
                 {
                     opcion = Convert.ToInt32(Console.ReadLine());
                     continuar = false;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error " + ex.Message); 
+                    Console.WriteLine("Error " + ex.Message);
                     continuar = true;
                 }
             }
@@ -90,7 +91,18 @@ namespace Programa1
                 Console.WriteLine("Desea finalizar?");
                 Console.WriteLine("1 = si");
                 Console.WriteLine("2 = no");
-                opcion = Convert.ToInt32(Console.ReadLine());
+                while (continuar)
+                {
+                    try
+                    {
+                        opcion = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error " + ex.Message);
+                        continuar = true;
+                    }
+                }
             } while (opcion == 1);
         }
     }
